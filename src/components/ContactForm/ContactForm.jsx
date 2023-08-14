@@ -1,23 +1,25 @@
 import css from './ContactForm.module.css';
-import { addContacts } from 'redux/contactsSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'redux/selectors';
+
 import { addContact } from 'redux/operations';
+import { selectContacts } from 'redux/selectors';
 
 export const ContactForm = () => {
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
 
   const handleChange = event => {
     event.preventDefault();
     const form = event.target;
-    const contValue = {
-      name: form.elements.name.value,
-      number: form.elements.number.value,
-    };
-    contacts.some(contact => contact === contValue.name)
+
+    const { name, number } = event.target.elements;
+    const contValue = { name: name.value, phone: number.value };
+
+    console.log('contValue: ', contValue.name);
+    contacts.some(({ name }) => name === contValue.name)
       ? alert(`${contValue.name} is already in contacts`)
       : dispatch(addContact(contValue));
+    // dispatch(addContact());
     form.reset();
   };
 

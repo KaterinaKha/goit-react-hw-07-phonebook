@@ -1,8 +1,8 @@
-.contaktList {
+.contactList {
   padding: 15px 10px;
 }
 .contactItem {
-  width: 350px;
+  width: 500px;
   margin-bottom: 10px;
   font-size: 18px;
   display: flex;
@@ -11,6 +11,7 @@
 .contactNumber {
   margin-left: 10px;
 }
+
 .contactDeleteBtn {
   margin-left: auto;
   font-size: 12px;
